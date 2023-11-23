@@ -9,7 +9,7 @@ Quizz is a learning platform to help students pass quizzes easily, provided by t
 #### Get all subjects
 
 ```
-  GET /api/subjects
+  GET /api/subject
 ```
 
 **Response**
@@ -50,7 +50,7 @@ Quizz is a learning platform to help students pass quizzes easily, provided by t
 #### Get one subject
 
 ```
-  GET /api/subjects/${id}
+  GET /api/subject/${id}
 ```
 
 Note that the subject id is **Required**
@@ -74,7 +74,7 @@ Note that the subject id is **Required**
 #### Create subject
 
 ```
-  POST /api/subjects
+  POST /api/subject
 ```
 Note that the subject id is **Required** except the *parentID*
 
@@ -119,7 +119,7 @@ Note that the subject id is **Required** except the *parentID*
 #### Update subject
 
 ```
-  PUT /api/subjects/${id}
+  PUT /api/subject/${id}
 ```
 
 Note that the subject id is **Required** except the *parentID*
