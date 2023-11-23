@@ -165,7 +165,7 @@ Note that the subject id is **Required** except the *parentID*
 #### Delete subject
 
 ```
-  DELETE /api/subjects/${id}
+  DELETE /api/subject/${id}
 ```
 Note that the subject id is **Required**
 
