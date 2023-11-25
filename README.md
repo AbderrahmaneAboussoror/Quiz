@@ -341,7 +341,7 @@ Note that the question id is **Required**
 ```
 
 
-##Subject
+## Subject
 
 #### Get all subjects
 
@@ -519,5 +519,119 @@ Note that the subject id is **Required**
 **Response**
 ```
 "message": "subject deleted successfully"
+```
+
+
+
+## Level
+
+#### Get all levels
+
+```
+  GET /api/level
+```
+
+**Response**
+```json
+    "levels": [
+        {
+            "id": 1,
+            "description": "this is the first description",
+            "minPoints": 0.0,
+            "maxPoints": 3.0,
+            "questions": []
+        }
+    ]
+```
+
+#### Get one level
+
+```
+  GET /api/level/${id}
+```
+
+Note that the level id is **Required**
+
+**Response**
+```json
+"level": {
+            "id": 1,
+            "description": "this is the first description",
+            "minPoints": 0.0,
+            "maxPoints": 3.0,
+            "questions": []
+        }
+```
+
+#### Create level
+
+```
+  POST /api/level
+```
+
+**Payload**
+```json
+{
+    "description" : "this is the first description",
+    "minPoints" : 0,
+    "maxPoints" : 3,
+    "questions" : []
+}
+```
+
+**Response**
+```json
+"level": {
+        "id": 1,
+        "description": "this is the first description",
+        "minPoints": 0.0,
+        "maxPoints": 3.0,
+        "questions": []
+    },
+"message": "level created successfully"
+```
+
+#### Update level
+
+```
+  PUT /api/level/${id}
+```
+
+Note that the level id is **Required**
+
+**Payload**
+```json
+{
+    "description" : "this is the first description but updated",
+    "minPoints" : 1,
+    "maxPoints" : 5,
+    "questions" : []
+}
+```
+
+**Response**
+```json
+{
+    "level": {
+        "id": 1,
+        "description": "this is the first description but updated",
+        "minPoints": 1.0,
+        "maxPoints": 5.0,
+        "questions": []
+    },
+    "message": "level created successfully"
+}
+```
+
+#### Delete level
+
+```
+  DELETE /api/level/${id}
+```
+Note that the level id is **Required**
+
+**Response**
+```
+"message": "level deleted successfully"
 ```
 
