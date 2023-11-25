@@ -17,32 +17,47 @@ Quizz is a learning platform to help students pass quizzes easily, provided by t
     "subjects": [
         {
             "id": 1,
-            "title": "sub1",
-            "parent": null,
+            "title": "first subject",
+            "parentSubject": null,
             "children": [
                 {
-                    "id": 3,
-                    "title": "sub2",
-                    "parentId": 1
+                    "id": 2,
+                    "title": "second subject",
+                    "parentId": 1,
+                    "parent": {
+                        "id": 1,
+                        "title": "first subject",
+                        "parentId": 0,
+                        "parent": null
+                    }
                 }
-            ]
+            ],
+            "questions": []
         },
         {
-            "id": 3,
-            "title": "sub2",
-            "parent": {
+            "id": 2,
+            "title": "second subject",
+            "parentSubject": {
                 "id": 1,
-                "title": "sub1",
-                "parent": null,
+                "title": "first subject",
+                "parentSubject": null,
                 "children": [
                     {
-                        "id": 3,
-                        "title": "sub2",
-                        "parentId": 1
+                        "id": 2,
+                        "title": "second subject",
+                        "parentId": 1,
+                        "parent": {
+                            "id": 1,
+                            "title": "first subject",
+                            "parentId": 0,
+                            "parent": null
+                        }
                     }
-                ]
+                ],
+                "questions": []
             },
-            "children": []
+            "children": [],
+            "questions": []
         }
     ]
 ```
@@ -58,17 +73,30 @@ Note that the subject id is **Required**
 **Response**
 ```json
 "subject": {
-        "id": 1,
-        "title": "sub1",
-        "parent": null,
-        "children": [
-            {
-                "id": 3,
-                "title": "sub2",
-                "parentId": 1
-            }
-        ]
-    }
+            "id": 2,
+            "title": "second subject",
+            "parentSubject": {
+                "id": 1,
+                "title": "first subject",
+                "parentSubject": null,
+                "children": [
+                    {
+                        "id": 2,
+                        "title": "second subject",
+                        "parentId": 1,
+                        "parent": {
+                            "id": 1,
+                            "title": "first subject",
+                            "parentId": 0,
+                            "parent": null
+                        }
+                    }
+                ],
+                "questions": []
+            },
+            "children": [],
+            "questions": []
+        }
 ```
 
 #### Create subject
@@ -81,39 +109,29 @@ Note that the subject id is **Required** except the *parentID*
 **Payload**
 ```json
 {
-    "id": 2,
-    "title": "sub2",
-    "parentId": 1 // or null if the created subject has no parent
+    "title" : "second subject",
+    "parentId" : 1,
+    "children" : [],
+    "questions" : []
 }
 ```
 
 **Response**
 ```json
-{
-    "subject": {
-        "id": 4,
-        "title": "sub2",
-        "parent": {
+"subject": {
+        "id": 2,
+        "title": "second subject",
+        "parentSubject": {
             "id": 1,
-            "title": "sub1",
-            "parent": null,
-            "children": [
-                {
-                    "id": 3,
-                    "title": "sub2",
-                    "parentId": 1
-                },
-                {
-                    "id": 4,
-                    "title": "sub2",
-                    "parentId": 1
-                }
-            ]
+            "title": "first subject",
+            "parentSubject": null,
+            "children": [],
+            "questions": []
         },
-        "children": null
+        "children": null,
+        "questions": null
     },
-    "message": "subject created"
-}
+"message": "subject created successfully"
 ```
 
 #### Update subject
@@ -127,9 +145,10 @@ Note that the subject id is **Required** except the *parentID*
 **Payload**
 ```json
 {
-    "id": 2,
-    "title": "sub2",
-    "parentId": 1 // or null if the updated subject has no parent
+    "title" : "second subject but updated",
+    "parentId" : 1,
+    "children" : [],
+    "questions" : []
 }
 ```
 
@@ -137,28 +156,19 @@ Note that the subject id is **Required** except the *parentID*
 ```json
 {
     "subject": {
-        "id": 4,
-        "title": "sub2",
-        "parent": {
+        "id": 2,
+        "title": "second subject",
+        "parentSubject": {
             "id": 1,
-            "title": "sub1",
-            "parent": null,
-            "children": [
-                {
-                    "id": 3,
-                    "title": "sub2",
-                    "parentId": 1
-                },
-                {
-                    "id": 4,
-                    "title": "sub2",
-                    "parentId": 1
-                }
-            ]
+            "title": "first subject",
+            "parentSubject": null,
+            "children": [],
+            "questions": []
         },
-        "children": null
+        "children": null,
+        "questions": null
     },
-    "message": "subject updated"
+    "message": "subject updated successfully"
 }
 ```
 
@@ -171,6 +181,6 @@ Note that the subject id is **Required**
 
 **Response**
 ```
-Subject with ID ${id} has been deleted.
+"message": "subject deleted successfully"
 ```
 
